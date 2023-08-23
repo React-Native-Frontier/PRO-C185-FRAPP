@@ -6,24 +6,21 @@ const Filter10 = ({
 		bounds: {
 			size: { width: faceWidth, height: faceHeight },
 		},
-		leftEyePosition,
-		rightEyePosition,
+		LEFT_EYE,
+		RIGHT_EYE,
 	},
 }) => {
 	const glassesWidth = faceWidth;
 	const glassesHeight = faceHeight / 3;
 	const transformAngle = (
-		angleRad = Math.atan(
-			(rightEyePosition.y - leftEyePosition.y) /
-				(rightEyePosition.x - leftEyePosition.x)
-		)
+		angleRad = Math.atan((RIGHT_EYE.y - LEFT_EYE.y) / (RIGHT_EYE.x - LEFT_EYE.x))
 	) => (angleRad * 180) / Math.PI;
 	return (
 		<View
 			style={{
 				position: 'absolute',
-				left: leftEyePosition.x - glassesWidth * 0.675,
-				top: leftEyePosition.y - glassesHeight * 0.5,
+				left: LEFT_EYE.x - glassesWidth * 0.675,
+				top: LEFT_EYE.y - glassesHeight * 0.5,
 			}}>
 			<Image
 				source={require('../assets/Frapp-09.png')}
